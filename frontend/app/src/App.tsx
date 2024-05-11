@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { TodoType } from './types/todo';
-import { createTodo, deleteTodo, getTodos, updateTodo } from "./lib/api/todos";
-import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
-import { Box, Button, Checkbox, Flex, Heading, Input, VStack } from "@chakra-ui/react"
+import { createTodo, deleteTodo, getTodos, updateTodo } from './lib/api/todos';
+import { UserType } from './types/user';
+import { createUser, deleteUser, getUsers, updateUser } from './lib/api/users';
+import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
+import { Box, Button, Checkbox, Flex, Heading, Input, VStack } from '@chakra-ui/react'
 
 const App = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
-  const [title, setTitle] = useState<string>("");
+  const [title, setTitle] = useState<string>('');
 
   const handleCreateTodo = async () => {
     const response = await createTodo({
@@ -14,7 +16,7 @@ const App = () => {
       completed: false,
     });
     setTodos([...todos, response.data]);
-    setTitle("");
+    setTitle('');
   };
 
   const handleToggleTodo = async (id: number, completed: boolean) => {
@@ -35,7 +37,7 @@ const App = () => {
 
   return (
     <VStack spacing={4} padding={4}>
-      <Heading as="h1" mb="8">
+      <Heading as='h1' mb='8'>
         Todoアプリ
       </Heading>
       <Flex>
