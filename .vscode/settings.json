@@ -3,5 +3,6 @@
         "chakra",
         "myuser",
         "Todos"
-    ]
+    ],
+    "editor.tabSize": 2
 }

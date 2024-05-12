@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { TodoType } from './types/todo';
 import { createTodo, deleteTodo, getTodos, updateTodo } from './lib/api/todos';
-import { UserType } from './types/user';
-import { createUser, deleteUser, getUsers, updateUser } from './lib/api/users';
 import { AddIcon, DeleteIcon } from '@chakra-ui/icons';
 import { Box, Button, Checkbox, Flex, Heading, Input, VStack } from '@chakra-ui/react'
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 const App = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
