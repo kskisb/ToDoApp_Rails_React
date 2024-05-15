@@ -23,7 +23,7 @@ export const MOCK_TODOS = [
   }),
   new Todo({
     id: 5,
-    title: 'ゲームする',
+    title: '早寝する',
     completed: false
   })
 ];

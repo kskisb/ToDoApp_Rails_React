@@ -6,6 +6,7 @@ import { Box, Button, Checkbox, Flex, Heading, Input, VStack } from '@chakra-ui/
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import HomePage from './home/HomePage';
 import TodosPage from './todos/TodosPage';
+import './App.css';
 
 const App = () => {
   return (
