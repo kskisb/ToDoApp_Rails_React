@@ -15,7 +15,7 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    // if(!isValid()) return;
+    if(!isValid()) return;
     onSave(todo);
   }
 
@@ -36,17 +36,15 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
       updateTodo = new Todo({ ...t, ...change });
       return updateTodo;
     });
-    // setErrors(() => validate(updateTodo));
+    setErrors(() => validate(updateTodo));
   }
 
   function validate(todo: Todo) {
-    let errors: any = {title: ''};
+    let errors: any = { title: '' };
     if(todo.title.length === 0) {
       errors.title = 'Title is required.';
     }
-    if(todo.title.length > 0 && todo.title.length < 3) {
-      errors.title = 'Name needs to be at least 3 characters.';
-    }
+    return errors;
   }
 
   function isValid() {
@@ -57,6 +55,11 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
     <form className="input-group vertical" onSubmit={handleSubmit}>
       <label htmlFor='title'>Todo Title</label>
       <input type="text" name="title" placeholder="enter title" value={todo.title} onChange={handleChange} />
+      {errors.title.length > 0 && (
+        <div className="card error">
+          <p>{errors.title}</p>
+        </div>
+      )}
       <div className="input-group">
         <button className="primary bordered medium">Save</button>
         <span />
