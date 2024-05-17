@@ -1,5 +1,6 @@
 import React from 'react';
 import { Todo } from './Todo';
+import { Link } from 'react-router-dom';
 
 interface TodoCardProps {
   todo: Todo;
@@ -15,9 +16,11 @@ function TodoCard(props: TodoCardProps) {
   return (
     <div className="card">
       <section className="section dark">
-        <h5 className="strong">
-          <strong>{todo.title}</strong>
-        </h5>
+        <Link to={'/todos/' + todo.id}>
+          <h5 className="strong">
+            <strong>{todo.title}</strong>
+          </h5>
+        </Link>
         <button className="bordered" onClick={() => { handleEditClick(todo) }}>
           <span className="icon-edit"></span>
           Edit

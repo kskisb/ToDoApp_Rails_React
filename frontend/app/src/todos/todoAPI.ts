@@ -1,4 +1,3 @@
-import { Type } from "typescript";
 import { Todo } from "./Todo";
 const baseUrl = 'http://localhost:3001/api/v1';
 const url = `${baseUrl}/todos`;
@@ -74,6 +73,12 @@ const todoAPI = {
         .catch((error: TypeError) => {
             throw new Error('There was an error retrieving the projects. Please try again.');
         });
+    },
+    find(id: number) {
+        return fetch(`${url}/${id}`)
+            .then(checkStatus)
+            .then(parseJSON)
+            .then(convertToTodoModel);
     },
 };
 
