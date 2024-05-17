@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+  height: 5.1875rem;
+}
+
+a.button.active {
+  background-color: rgba(211, 211, 211, 0.5);
+  color: #333;
+}
