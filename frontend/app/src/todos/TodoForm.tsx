@@ -60,6 +60,8 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
           <p>{errors.title}</p>
         </div>
       )}
+      <label htmlFor='completed'>Done?</label>
+      <input type="checkbox" name="completed" checked={todo.completed} onChange={handleChange} />
       <div className="input-group">
         <button className="primary bordered medium">Save</button>
         <span />

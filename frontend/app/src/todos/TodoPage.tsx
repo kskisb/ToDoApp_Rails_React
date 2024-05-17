@@ -20,7 +20,7 @@ function TodoPage(props: any) {
         setLoading(false);
       })
       .catch((e) => {
-        setError(e.message);  // ここを修正
+        setError(e);
         setLoading(false);
       });
   }, [id]);
@@ -42,7 +42,7 @@ function TodoPage(props: any) {
             <div className="card large error">
               <section>
                 <p>
-                  <span className="icon-alert inverse"></span> {error}  {/* ここも修正 */}
+                  <span className="icon-alert inverse"></span> {error}
                 </p>
               </section>
             </div>

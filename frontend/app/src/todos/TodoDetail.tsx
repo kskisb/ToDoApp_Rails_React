@@ -17,7 +17,7 @@ export default function TodoDetail({ todo }: TodoDetailProps) {
             <p>
               <mark className="active">
                 {' '}
-                {todo.completed ? 'active' : 'inactive'}
+                {todo.completed ? 'Done' : 'In progress'}
               </mark>
             </p>
           </section>
