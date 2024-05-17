@@ -42,7 +42,6 @@ header {
 }
 
 a.button.active {
-  /* border: 1px solid var(--fore-color); */
-  background-color: rgba(211, 211, 211, 0.5); /* 薄い灰色の半透明 */
-  color: #333; /* テキストの色を濃い灰色に設定 */
+  background-color: rgba(211, 211, 211, 0.5);
+  color: #333;
 }
