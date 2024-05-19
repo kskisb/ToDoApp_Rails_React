@@ -25,6 +25,9 @@ function TodoCard(props: TodoCardProps) {
           <span className="icon-edit"></span>
           Edit
         </button>
+        <button className="bordered">
+          Delete
+        </button>
       </section>
     </div>
   )
