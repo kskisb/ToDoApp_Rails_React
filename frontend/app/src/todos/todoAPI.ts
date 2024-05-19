@@ -60,6 +60,20 @@ const todoAPI = {
                 throw new Error('There was an error retrieving the projects. Please try again.');
             });
     },
+    post(todo: Todo) {
+        return fetch(`${url}`, {
+            method: 'POST',
+            body: JSON.stringify(todo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(checkStatus)
+        .then(parseJSON)
+        .catch((error: TypeError) => {
+            throw new Error('There was an error retrieving the projects. Please try again.');
+        });
+    },
     put(todo: Todo) {
         return fetch(`${url}/${todo.id}`, {
             method: 'PUT',
