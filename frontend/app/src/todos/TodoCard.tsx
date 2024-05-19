@@ -5,13 +5,21 @@ import { Link } from 'react-router-dom';
 interface TodoCardProps {
   todo: Todo;
   onEdit: (todo: Todo) => void;
+  onDelete: (todoId: number) => void;
 }
 
 function TodoCard(props: TodoCardProps) {
-  const { todo, onEdit } = props;
+  const { todo, onEdit, onDelete } = props;
   const handleEditClick = (todoBeginEdited: Todo) => {
     onEdit(todoBeginEdited);
   };
+  const handleDeleteClick = () => {
+    if (todo.id !== undefined) {
+      onDelete(todo.id);
+    } else {
+      console.error('Todo id is undefined');
+    }
+  }
 
   return (
     <div className="card">
@@ -24,6 +32,9 @@ function TodoCard(props: TodoCardProps) {
         <button className="bordered" onClick={() => { handleEditClick(todo) }}>
           <span className="icon-edit"></span>
           Edit
+        </button>
+        <button className="bordered" onClick={handleDeleteClick}>
+          Delete
         </button>
       </section>
     </div>
