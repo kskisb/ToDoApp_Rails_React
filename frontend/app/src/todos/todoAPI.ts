@@ -88,6 +88,16 @@ const todoAPI = {
             throw new Error('There was an error retrieving the projects. Please try again.');
         });
     },
+    delete(todo: Todo) {
+        return fetch(`${url}/${todo.id}`, {
+            method: 'DELETE',
+        })
+        .then(delay(300))
+        .then(checkStatus)
+        .catch((error: TypeError) => {
+            throw new Error('There was an error retrieving the projects. Please try again.');
+        });
+    },
     find(id: number) {
         return fetch(`${url}/${id}`)
             .then(checkStatus)

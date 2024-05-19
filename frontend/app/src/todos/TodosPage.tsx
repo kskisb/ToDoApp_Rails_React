@@ -14,6 +14,23 @@ function TodosPage() {
     setCurrentPage((currentPage) => currentPage + 1);
   };
 
+  const handleDeleteTodo = async (todoId: number) => {
+    try {
+      setLoading(true);
+      const todoToDelete = await todoAPI.find(todoId);
+
+      await todoAPI.delete(todoToDelete);
+
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoToDelete.id));
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     async function loadTodos() {
       setLoading(true);
@@ -85,7 +102,7 @@ function TodosPage() {
 
       <TodoCreate onSave={createTodo} />
 
-      <TodoList onSave={saveTodo} todos={todos} />
+      <TodoList onSave={saveTodo} todos={todos} onDelete={handleDeleteTodo} />
 
       {!loading && !error && (
         <div className="row">
