@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Todo } from './Todo';
+import { Todo } from '../../models/Todo';
 import TodoCard from './TodoCard';
 import TodoForm from './TodoForm';
 
