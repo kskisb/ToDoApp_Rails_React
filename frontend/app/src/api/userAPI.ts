@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { User } from "../models/User";
 const baseUrl = 'http://localhost:3001/api/v1';
 const url = `${baseUrl}/users`;
 

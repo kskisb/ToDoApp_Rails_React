@@ -4,6 +4,7 @@ import HomePage from './components/home/HomePage';
 import TodosPage from './components/todos/TodosPage';
 import TodoPage from './components/todos/TodoPage';
 import './App.css';
+import UsersPage from './components/users/UsersPage';
 
 function App() {
   return (
