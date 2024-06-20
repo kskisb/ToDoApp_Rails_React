@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { todoAPI } from './todoAPI';
-import { Todo } from './Todo';
+import { todoAPI } from '../../api/todoAPI';
+import { Todo } from '../../models/Todo';
 import TodoList from './TodoList';
 import TodoCreate from './TodoCreate';
 
