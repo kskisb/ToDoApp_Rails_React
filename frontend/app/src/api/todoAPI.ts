@@ -1,4 +1,4 @@
-import { Todo } from "./Todo";
+import { Todo } from "../models/Todo";
 const baseUrl = 'http://localhost:3001/api/v1';
 const url = `${baseUrl}/todos`;
 
