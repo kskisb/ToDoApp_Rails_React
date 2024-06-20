@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import HomePage from './home/HomePage';
-import TodosPage from './todos/TodosPage';
-import TodoPage from './todos/TodoPage';
+import HomePage from './components/home/HomePage';
+import TodosPage from './components/todos/TodosPage';
+import TodoPage from './components/todos/TodoPage';
 import './App.css';
 
 function App() {
