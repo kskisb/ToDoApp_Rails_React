@@ -10,35 +10,44 @@ interface TodoCardProps {
 
 function TodoCard(props: TodoCardProps) {
   const { todo, onEdit, onDelete } = props;
-  const handleEditClick = (todoBeginEdited: Todo) => {
-    onEdit(todoBeginEdited);
+
+  const handleEditClick = (todoBeingEdited: Todo) => {
+    onEdit(todoBeingEdited);
   };
+
   const handleDeleteClick = () => {
     if (todo.id !== undefined) {
       onDelete(todo.id);
     } else {
       console.error('Todo id is undefined');
     }
-  }
+  };
+
+  const statusClass = todo.completed ? 'completed' : 'in-progress';
 
   return (
-    <div className="card">
-      <section className="section dark">
+    <div className="container">
+      <section className="section horizontal">
         <Link to={'/todos/' + todo.id}>
           <h5 className="strong">
             <strong>{todo.title}</strong>
           </h5>
         </Link>
-        <button className="bordered" onClick={() => { handleEditClick(todo) }}>
+        <button className="bordered" onClick={() => handleEditClick(todo)}>
           <span className="icon-edit"></span>
           Edit
         </button>
         <button className="bordered" onClick={handleDeleteClick}>
           Delete
         </button>
+        <p>
+          <mark className={`status ${statusClass}`}>
+            {todo.completed ? 'Done' : 'In progress'}
+          </mark>
+        </p>
       </section>
     </div>
-  )
+  );
 }
 
-export default TodoCard
+export default TodoCard;
