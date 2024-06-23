@@ -20,7 +20,7 @@ function TodoList({ todos, onSave, onDelete }: TodoListProps) {
   };
 
   return (
-    <div className="row">
+    <div className="col">
       {todos.map((todo) => (
         <div key={todo.id} className="cols-sm">
           {todo === todoBeingEdited ? (
