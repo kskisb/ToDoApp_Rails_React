@@ -48,6 +48,13 @@ function TodoCard(props: TodoCardProps) {
           {todo.deadline ? formatDate(todo.deadline) : 'Not set'}
         </p>
         <p>
+          <strong>Priority: </strong>
+          <mark className={`${todo.priority}`}>
+            {todo.priority}
+          </mark>
+        </p>
+        <p>
+          <strong>Status: </strong>
           <mark className={`status ${statusClass}`}>
             {todo.completed ? 'Done' : 'In progress'}
           </mark>
