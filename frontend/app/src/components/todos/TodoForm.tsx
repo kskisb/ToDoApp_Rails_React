@@ -68,6 +68,8 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
+      <label htmlFor='deadline'>Deadline</label>
+      <input type="datetime-local" name="deadline" value={todo.deadline} onChange={handleChange} />
       <div className="input-group">
         <button className="primary bordered medium">Save</button>
         <span />
