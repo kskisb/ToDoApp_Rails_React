@@ -62,6 +62,14 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
       )}
       <label htmlFor='completed'>Done?</label>
       <input type="checkbox" name="completed" checked={todo.completed} onChange={handleChange} />
+      <label htmlFor='priority'>Priority</label>
+      <select name="priority" value={todo.priority} onChange={handleChange}>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <label htmlFor='deadline'>Deadline</label>
+      <input type="datetime-local" name="deadline" value={todo.deadline} onChange={handleChange} />
       <div className="input-group">
         <button className="primary bordered medium">Save</button>
         <span />
@@ -70,7 +78,6 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
         </button>
       </div>
     </form>
-
   )
 }
 
