@@ -70,10 +70,10 @@ function TodoForm({ todo: initialTodo, onSave, onCancel }: TodoFormProps) {
       </select>
       <label htmlFor='deadline'>Deadline</label>
       <input type="datetime-local" name="deadline" value={todo.deadline} onChange={handleChange} />
-      <div className="input-group">
-        <button className="primary bordered medium">Save</button>
+      <div className="actions">
+        <button className="bordered save">Save</button>
         <span />
-        <button type="button" className="bordered medium" onClick={onCancel}>
+        <button type="button" className="bordered" onClick={onCancel}>
           cancel
         </button>
       </div>

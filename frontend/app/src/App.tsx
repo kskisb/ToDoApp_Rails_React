@@ -20,7 +20,7 @@ function App() {
           Todos
         </NavLink>
       </header>
-      <div className="container">
+      <div className="todos-container">
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/todos' element={<TodosPage />} />
