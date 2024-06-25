@@ -1,5 +1,4 @@
 header {
-  /* height: 5.1875rem; */
   height: 50px;
 }
 
@@ -19,7 +18,6 @@ a.button.active {
   align-items: center;
 }
 
-
 .bordered {
   padding: 5px 10px;
   border-radius: 3px;
@@ -34,22 +32,10 @@ a.button.active {
   border-radius: 3px;
 }
 
-.completed {
-  background-color: rgba(255, 0, 0, 0.8);
-}
-
-.in-progress {
-  background-color: rgba(0, 0, 255, 0.8);
-}
-
-.High {
-  background-color: rgba(255, 0, 0, 1);
-}
-
-.Medium {
-  background-color: rgba(255, 165, 0, 1);
-}
-
-.Low {
-  background-color: rgba(0, 154, 87, 1);
-}
+/* .bordered {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+} */

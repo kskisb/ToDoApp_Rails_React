@@ -1,6 +1,7 @@
 import React from 'react';
 import { Todo } from '../../models/Todo';
 import { Link } from 'react-router-dom';
+import '../../TodoCard.css';
 
 interface TodoCardProps {
   todo: Todo;
@@ -37,7 +38,7 @@ function TodoCard(props: TodoCardProps) {
 
   return (
     <div className="container">
-      <section className="section horizontal">
+      <section className="section">
         <Link to={'/todos/' + todo.id}>
           <h5 className="strong">
             <strong>{todo.title}</strong>
@@ -49,7 +50,7 @@ function TodoCard(props: TodoCardProps) {
         </p>
         <p>
           <strong>Priority: </strong>
-          <mark className={`${todo.priority}`}>
+          <mark className={`priority ${todo.priority}`}>
             {todo.priority}
           </mark>
         </p>
@@ -59,13 +60,15 @@ function TodoCard(props: TodoCardProps) {
             {todo.completed ? 'Done' : 'In progress'}
           </mark>
         </p>
-        <button className="bordered" onClick={() => handleEditClick(todo)}>
-          <span className="icon-edit"></span>
-          Edit
-        </button>
-        <button className="bordered" onClick={handleDeleteClick}>
-          Delete
-        </button>
+        <div className="actions">
+          <button className="bordered edit" onClick={() => handleEditClick(todo)}>
+            <span className="icon-edit"></span>
+            Edit
+          </button>
+          <button className="bordered delete" onClick={handleDeleteClick}>
+            Delete
+          </button>
+        </div>
       </section>
     </div>
   );
