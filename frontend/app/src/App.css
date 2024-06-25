@@ -33,6 +33,7 @@ a.button.active {
 }
 
 .todos-container {
+  height: 100%;
   max-height: 90vh;
   overflow-y: auto;
   border: 1px solid #ccc;
