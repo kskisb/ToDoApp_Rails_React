@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { todoAPI } from './todoAPI';
-import { Todo } from './Todo';
+import { todoAPI } from '../../api/todoAPI';
+import { Todo } from '../../models/Todo';
 import TodoList from './TodoList';
 import TodoCreate from './TodoCreate';
 
@@ -8,11 +8,6 @@ function TodosPage() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handleMoreClick = () => {
-    setCurrentPage((currentPage) => currentPage + 1);
-  };
 
   const handleDeleteTodo = async (todoId: number) => {
     try {
@@ -35,13 +30,9 @@ function TodosPage() {
     async function loadTodos() {
       setLoading(true);
       try {
-        const data = await todoAPI.get(currentPage);
+        const data = await todoAPI.get(1);
         setError('');
-        if(currentPage === 1) {
-          setTodos(data);
-        } else {
-          setTodos((todos) => [...todos, ...data]);
-        }
+        setTodos(data);
       }
       catch (e) {
         if(e instanceof Error) {
@@ -52,7 +43,7 @@ function TodosPage() {
       }
     }
     loadTodos();
-  }, [currentPage]);
+  }, [1]);
 
   const createTodo = (todo: Todo) => {
     todoAPI
@@ -103,18 +94,6 @@ function TodosPage() {
       <TodoCreate onSave={createTodo} />
 
       <TodoList onSave={saveTodo} todos={todos} onDelete={handleDeleteTodo} />
-
-      {!loading && !error && (
-        <div className="row">
-          <div className="col-sm-12">
-            <div className="button-group fluid">
-              <button className="button default" onClick={handleMoreClick}>
-                More...
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {loading && (
         <div className="center-page">

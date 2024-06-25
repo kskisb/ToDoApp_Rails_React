@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Todo } from './Todo';
+import { Todo } from '../../models/Todo';
 import TodoCard from './TodoCard';
 import TodoForm from './TodoForm';
+import TodoListHeader from './TodoListHeader';
 
 
 interface TodoListProps {
@@ -20,7 +21,8 @@ function TodoList({ todos, onSave, onDelete }: TodoListProps) {
   };
 
   return (
-    <div className="row">
+    <div className="col">
+      <TodoListHeader />
       {todos.map((todo) => (
         <div key={todo.id} className="cols-sm">
           {todo === todoBeingEdited ? (
