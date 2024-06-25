@@ -9,7 +9,9 @@
 - Ruby on Rails7
 
 ## 使用例
-https://github.com/kskisb/ToDoApp_Rails_React/assets/134213401/bfc84281-3be7-41a1-a073-3ff56d75ad91
+https://github.com/kskisb/ToDoApp_Rails_React/assets/134213401/701cad30-716d-4ef9-b026-688d321e9caa
+
+
 
 ## 今後の開発方針
 - OAuthによる認証も含めたユーザーの登録・削除機能を実装
