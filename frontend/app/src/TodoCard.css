@@ -21,7 +21,7 @@
 }
 
 .completed {
-  background-color: rgba(255, 0, 0, 0.8);
+  background-color: rgb(50, 204, 39);
 }
 
 .in-progress {
@@ -56,9 +56,9 @@
 }
 
 .Medium {
-  background-color: rgba(255, 165, 0, 1);
+  background-color: rgba(255, 165, 0, 0.8);
 }
 
 .Low {
-  background-color: rgba(0, 154, 87, 1);
+  background-color: rgba(69, 106, 195, 0.8);
 }
