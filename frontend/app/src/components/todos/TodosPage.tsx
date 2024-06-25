@@ -75,7 +75,7 @@ function TodosPage() {
   };
 
   return (
-    <>
+    <div  className="todos-container">
       <h1>Todos</h1>
 
       {error && (
@@ -101,7 +101,7 @@ function TodosPage() {
           <p>Loading...</p>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
