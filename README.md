@@ -9,7 +9,7 @@
 - Ruby on Rails7
 
 ## 使用例
-https://github.com/kskisb/ToDoApp_Rails_React/assets/134213401/701cad30-716d-4ef9-b026-688d321e9caa
+https://github.com/kskisb/ToDoApp_Rails_React/assets/134213401/f9542e8f-d2dd-4315-b3e8-a843569828c2
 
 
 
