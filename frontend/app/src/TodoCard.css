@@ -9,12 +9,6 @@
   text-align: center;
 }
 
-.section .actions {
-  flex: 0 0 auto;
-  display: flex;
-  gap: 10px;
-}
-
 .status {
   padding: 3px 8px;
   border-radius: 3px;
