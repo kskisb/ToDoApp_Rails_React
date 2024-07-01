@@ -39,25 +39,27 @@ function TodoCard(props: TodoCardProps) {
   return (
     <div className="container">
       <section className="section">
-        <Link to={'/todos/' + todo.id}>
-          <h5 className="strong">
-            <strong>{todo.title}</strong>
-          </h5>
-        </Link>
-        <p>
+        <div className="col-sm">
+          <Link to={'/todos/' + todo.id}>
+            <h5 className="strong">
+              <strong>{todo.title}</strong>
+            </h5>
+          </Link>
+        </div>
+        <div className="col-sm">
           {todo.deadline ? formatDate(todo.deadline) : 'Not set'}
-        </p>
-        <p>
+        </div>
+        <div className="col-sm">
           <mark className={`priority ${todo.priority}`}>
             {todo.priority}
           </mark>
-        </p>
-        <p>
+        </div>
+        <div className="col-sm">
           <mark className={`status ${statusClass}`}>
             {todo.completed ? 'Done' : 'In progress'}
           </mark>
-        </p>
-        <div className="actions">
+        </div>
+        <div className="col-sm actions">
           <button className="bordered edit" onClick={() => handleEditClick(todo)}>
             <span className="icon-edit"></span>
             Edit
