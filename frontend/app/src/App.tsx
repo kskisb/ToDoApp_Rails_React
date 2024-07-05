@@ -4,6 +4,7 @@ import HomePage from './components/home/HomePage';
 import TodosPage from './components/todos/TodosPage';
 import TodoPage from './components/todos/TodoPage';
 import './App.css';
+import UsersPage from './components/users/UsersPage';
 
 function App() {
   return (
@@ -19,12 +20,16 @@ function App() {
         <NavLink to="/todos" className="button rounded">
           Todos
         </NavLink>
+        <NavLink to="/users" className="button rounded">
+          Users
+        </NavLink>
       </header>
       <div className="todos-container">
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/todos' element={<TodosPage />} />
           <Route path='/todos/:id' element={<TodoPage />} />
+          <Route path='/users' element={<UsersPage />} />
         </Routes>
       </div>
     </Router>
