@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 module Types
-  class UserType < Types::BaseObject
+  class TodoType < Types::BaseObject
     field :id, ID, null: false
-    field :name, String
-    field :email, String
+    field :title, String
+    field :completed, Boolean
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :todos, [TodoType], null: true
+    field :priority, String
+    field :deadline, GraphQL::Types::ISO8601DateTime
+    field :user_id, Integer
   end
 end
