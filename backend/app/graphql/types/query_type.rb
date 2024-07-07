@@ -18,17 +18,7 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
-    field :user, Types::UserType, null: false do
-      argument :id, ID, required: true
-    end
-    field :users, [Types::UserType], null: false
-
-    def user(id:)
-      User.find(id)
-    end
-
-    def users
-      User.all
-    end
+    field :user, resolver: Resolvers::UserResolver
+    field :users, resolver: Resolvers::UsersResolver
   end
 end
