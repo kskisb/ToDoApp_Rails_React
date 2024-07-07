@@ -20,5 +20,8 @@ module Types
 
     field :user, resolver: Resolvers::UserResolver
     field :users, resolver: Resolvers::UsersResolver
+
+    field :todo, resolver: Resolvers::TodoResolver
+    field :todos, resolver: Resolvers::TodoResolver
   end
 end
