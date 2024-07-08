@@ -10,5 +10,10 @@ module Types
     field :priority, String
     field :deadline, GraphQL::Types::ISO8601DateTime
     field :user_id, Integer
+    field :user, UserType, null: false
+
+    def user
+      Loaders::RecordLoader.for(User).load(object.user_id)
+    end
   end
 end
