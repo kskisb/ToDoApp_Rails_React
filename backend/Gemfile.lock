@@ -95,6 +95,9 @@ GEM
       railties
     graphql (2.3.7)
       base64
+    graphql-batch (0.6.0)
+      graphql (>= 1.12.18, < 3)
+      promise.rb (~> 0.7.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -127,6 +130,7 @@ GEM
     nio4r (2.7.1)
     nokogiri (1.16.6-aarch64-linux)
       racc (~> 1.4)
+    promise.rb (0.7.4)
     psych (5.1.2)
       stringio
     puma (5.6.8)
@@ -195,6 +199,7 @@ DEPENDENCIES
   debug
   graphiql-rails
   graphql
+  graphql-batch
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rack-cors
