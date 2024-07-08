@@ -8,6 +8,8 @@ class ApiSchema < GraphQL::Schema
   # use GraphQL::Dataloader
   use GraphQL::Batch
 
+  use GraphQL::Schema::Timeout, max_seconds: 3
+
   # GraphQL-Ruby calls this when something goes wrong while running a query:
   def self.type_error(err, context)
     # if err.is_a?(GraphQL::InvalidNullError)
