@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  post "/graphql", to: "graphql#execute"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -11,7 +10,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :todos, only: [:index, :show, :create, :update, :destroy]
+      resources :users do
+        resources :todos, only: [:index, :show, :create, :update, :destroy]
+      end
 
       post "/graphql", to: "graphql#execute"
     end
