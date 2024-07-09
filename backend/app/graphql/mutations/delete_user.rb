@@ -12,5 +12,6 @@ module Mutations
       {
         id: id
       }
+    end
   end
 end
