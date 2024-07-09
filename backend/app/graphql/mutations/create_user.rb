@@ -2,7 +2,7 @@
 
 module Mutations
   class CreateUser < BaseMutation
-    field :user, Types::UserType, null: true
+    field :user, Types::UserType, null: false
 
     argument :name, String, required: true
     argument :email, String, required: false
