@@ -1,7 +1,7 @@
 import React from 'react';
-import { Todo } from '../../models/Todo';
+import { Todo } from 'models/Todo';
 import { Link } from 'react-router-dom';
-import '../../TodoCard.css';
+import 'TodoCard.css'
 
 interface TodoCardProps {
   todo: Todo;

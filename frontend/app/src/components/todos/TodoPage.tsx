@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { todoAPI } from '../../api/todoAPI';
+import { todoAPI } from 'api/todoAPI';
 import TodoDetail from './TodoDetail';
-import { Todo } from '../../models/Todo';
+import { Todo } from 'models/Todo';
 import { useParams } from 'react-router-dom';
 
 function TodoPage(props: any) {

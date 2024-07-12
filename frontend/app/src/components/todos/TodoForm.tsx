@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState } from 'react';
-import { Todo } from '../../models/Todo';
+import { Todo } from 'models/Todo';
 
 interface TodoFormProps {
   todo: Todo;
