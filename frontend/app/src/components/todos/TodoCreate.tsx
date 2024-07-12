@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Todo } from '../../models/Todo';
+import { Todo } from 'models/Todo';
 import TodoForm from './TodoForm';
 
 interface TodoCreateProps {

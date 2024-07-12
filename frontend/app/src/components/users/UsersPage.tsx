@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { userAPI } from '../../api/userAPI';
-import { User } from '../../models/User';
+import { userAPI } from 'api/userAPI';
+import { User } from 'models/User';
 
 function UsersPage() {
   return (
