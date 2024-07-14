@@ -1,4 +1,4 @@
-export interface Todo {
+export interface TodoParams {
   id: number
   title: string
   completed: boolean
@@ -8,3 +8,5 @@ export interface Todo {
   created_at: Date
   updated_at: Date
 }
+
+export {}

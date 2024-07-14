@@ -4,3 +4,5 @@ export interface SignUpParams {
   password: string
   passwordConfirmation: string
 }
+
+export {}
