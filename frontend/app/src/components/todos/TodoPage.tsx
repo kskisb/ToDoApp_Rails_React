@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { todoAPI } from 'api/todoAPI';
 import TodoDetail from './TodoDetail';
 import { Todo } from 'models/Todo';
 import { useParams } from 'react-router-dom';
+import { AuthContext } from 'App';
 
 function TodoPage(props: any) {
+  const { currentUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [todo, setTodo] = useState<Todo | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -12,18 +14,27 @@ function TodoPage(props: any) {
   const id = Number(params.id);
 
   useEffect(() => {
-    setLoading(true);
-    todoAPI
-      .find(id)
-      .then((data) => {
+    async function loadTodo() {
+      setLoading(true);
+      try {
+        if (!currentUser) throw new Error('User not authenticated');
+
+        const data = await todoAPI.find(currentUser.id, id);
         setTodo(data);
+        setError(null);
+      } catch (e) {
+        if (e instanceof Error) {
+          setError(e.message);
+        }
+      } finally {
         setLoading(false);
-      })
-      .catch((e) => {
-        setError(e);
-        setLoading(false);
-      });
-  }, [id]);
+      }
+    }
+
+    if (currentUser) {
+      loadTodo();
+    }
+  }, [currentUser, id]);
 
   return (
     <div>
