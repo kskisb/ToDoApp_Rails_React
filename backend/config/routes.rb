@@ -19,7 +19,9 @@ Rails.application.routes.draw do
         resources :sessions, only: %i[index]
       end
 
-      resources :todos, only: [:index, :show, :create, :update, :destroy]
+      resources :users do
+        resources :todos, only: [:index, :show, :create, :update, :destroy]
+      end
 
       post "/graphql", to: "graphql#execute"
     end

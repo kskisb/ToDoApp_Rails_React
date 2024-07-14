@@ -1,8 +1,9 @@
 class Api::V1::TodosController < ApplicationController
+  before_action :set_user
   before_action :set_todo, only: [:show, :update, :destroy]
 
   def index
-    @todos = Todo.all
+    @todos = @user.todos
     render json: @todos
   end
 
@@ -11,10 +12,10 @@ class Api::V1::TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = @user.todos.build(todo_params)
 
     if @todo.save
-      render json: @todo, status: :created, location: api_v1_todo_url(@todo)
+      render json: @todo, status: :created, location: api_v1_user_todo_url(@user, @todo)
     else
       render json: @todo.errors, status: :unprocessable_entity
     end
@@ -35,11 +36,15 @@ class Api::V1::TodosController < ApplicationController
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def set_todo
-    @todo = Todo.find(params[:id])
+    @todo = @user.todos.find(params[:id])
   end
 
   def todo_params
-    params.require(:todo).permit(:title, :completed, :priority, :deadline)
+    params.require(:todo).permit(:id, :title, :completed, :priority, :deadline, :user_id)
   end
 end
