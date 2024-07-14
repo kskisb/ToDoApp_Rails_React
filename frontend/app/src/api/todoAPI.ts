@@ -1,109 +1,76 @@
-import { Todo } from "models/Todo";
-const baseUrl = 'http://localhost:3001/api/v1';
-const url = `${baseUrl}/todos`;
+import client from 'api/client';
+import Cookies from 'js-cookie';
+import { Todo } from 'models/Todo';
 
-function translateStatusToErrorMessage(status: number) {
-    switch (status) {
-        case 401:
-            return 'Please login again.';
-        case 403:
-            return 'You do not have permission to view the todos.';
-        default:
-            return 'There was an error retrieving the todos. Please try again.';
-    }
-}
-
-function checkStatus(response: any) {
-    if(response.ok) {
-        return response;
-    } else {
-        const httpErrorInfo = {
-            status: response.status,
-            statusText: response.statusText,
-            url: response.url,
-        };
-        console.log(`log server http error: ${JSON.stringify(httpErrorInfo)}`);
-
-        let errorMessage = translateStatusToErrorMessage(httpErrorInfo.status);
-        throw new Error(errorMessage);
-    }
-}
-
-function parseJSON(response: Response) {
-    return response.json();
-}
-
-function delay(ms: number) {
-    return function (x: any): Promise<any> {
-        return new Promise((resolve) => setTimeout(() => resolve(x), ms));
-    };
-}
-
-function convertToTodoModels(data: any[]): Todo[] {
-    let todos: Todo[] = data.map(convertToTodoModel);
-    return todos;
-}
-
-function convertToTodoModel(item: any): Todo {
-    return new Todo(item);
-}
+const getAuthHeaders = () => ({
+  'access-token': Cookies.get('_access_token') || '',
+  'client': Cookies.get('_client') || '',
+  'uid': Cookies.get('_uid') || ''
+});
 
 const todoAPI = {
-    get(page = 1, limit = 20) {
-        return fetch(`${url}?_page=${page}&_limit=${limit}&_sort=name`)
-            .then(delay(600))
-            .then(checkStatus)
-            .then(parseJSON)
-            .then(convertToTodoModels)
-            .catch((error: TypeError) => {
-                console.log('log client error' + error);
-                throw new Error('There was an error retrieving the projects. Please try again.');
-            });
-    },
-    post(todo: Todo) {
-        return fetch(`${url}`, {
-            method: 'POST',
-            body: JSON.stringify(todo),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(checkStatus)
-        .then(parseJSON)
-        .catch((error: TypeError) => {
-            throw new Error('There was an error retrieving the projects. Please try again.');
-        });
-    },
-    put(todo: Todo) {
-        return fetch(`${url}/${todo.id}`, {
-            method: 'PUT',
-            body: JSON.stringify(todo),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(checkStatus)
-        .then(parseJSON)
-        .catch((error: TypeError) => {
-            throw new Error('There was an error retrieving the projects. Please try again.');
-        });
-    },
-    delete(todo: Todo) {
-        return fetch(`${url}/${todo.id}`, {
-            method: 'DELETE',
-        })
-        .then(delay(300))
-        .then(checkStatus)
-        .catch((error: TypeError) => {
-            throw new Error('There was an error retrieving the projects. Please try again.');
-        });
-    },
-    find(id: number) {
-        return fetch(`${url}/${id}`)
-            .then(checkStatus)
-            .then(parseJSON)
-            .then(convertToTodoModel);
-    },
+  get(userId: number, page = 1, limit = 20) {
+    return client.get(`/users/${userId}/todos?_page=${page}&_limit=${limit}&_sort=name`, {
+      headers: getAuthHeaders()
+    })
+    .then(response => response.data)
+    .then(data => data.map((item: any) => new Todo(item)))
+    .catch(error => {
+      console.error('Error retrieving todos:', error);
+      throw new Error('There was an error retrieving the todos. Please try again.');
+    });
+  },
+
+  post(userId: number, todo: Todo) {
+    return client.post(`/users/${userId}/todos`, todo, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...getAuthHeaders()
+      }
+    })
+    .then(response => response.data)
+    .catch(error => {
+      console.error('Error posting todo:', error);
+      throw new Error('There was an error creating the todo. Please try again.');
+    });
+  },
+
+  put(userId: number, todo: Todo) {
+    return client.put(`/users/${userId}/todos/${todo.id}`, todo, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...getAuthHeaders()
+      }
+    })
+    .then(response => response.data)
+    .catch(error => {
+      console.error('Error updating todo:', error);
+      throw new Error('There was an error updating the todo. Please try again.');
+    });
+  },
+
+  delete(userId: number, todo: Todo) {
+    return client.delete(`/users/${userId}/todos/${todo.id}`, {
+      headers: getAuthHeaders()
+    })
+    .then(response => response.data)
+    .catch(error => {
+      console.error('Error deleting todo:', error);
+      throw new Error('There was an error deleting the todo. Please try again.');
+    });
+  },
+
+  find(userId: number, id: number) {
+    return client.get(`/users/${userId}/todos/${id}`, {
+      headers: getAuthHeaders()
+    })
+    .then(response => response.data)
+    .then(data => new Todo(data))
+    .catch(error => {
+      console.error('Error retrieving todo:', error);
+      throw new Error('There was an error retrieving the todo. Please try again.');
+    });
+  },
 };
 
 export { todoAPI };
