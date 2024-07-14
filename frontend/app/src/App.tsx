@@ -63,34 +63,7 @@ function App() {
   return (
     <Router>
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser }}>
-        <header className="sticky">
-          <NavLink to="/" className="button rounded">
-            <span className="icon-home"></span>
-            Home
-          </NavLink>
-          <NavLink to="/todos" className="button rounded">
-            Todos
-          </NavLink>
-          <NavLink to="/users" className="button rounded">
-            Users
-          </NavLink>
-          {!isSignedIn && (
-            <>
-              <NavLink to='/signup' className="button rounded">
-                Sign Up
-              </NavLink>
-              <NavLink to='/signin' className="button rounded">
-                Sign In
-              </NavLink>
-            </>
-          )}
-          {isSignedIn && (
-            <button onClick={() => setIsSignedIn(false)} className="button rounded">
-              Sign Out
-            </button>
-          )}
-        </header>
-        <div className="todos-container">
+        <CommonLayout>
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/signup' element={<SignUpPage />} />
@@ -111,7 +84,7 @@ function App() {
               </PrivateRoute>
             } />
           </Routes>
-        </div>
+        </CommonLayout>
       </AuthContext.Provider>
     </Router>
   )
